@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-// Currently using inline assembly, which is not supported on x64 or ARM. May rework in the future to support x64 and ARM, but for now, this is an x86-only DLL.
 static_assert(sizeof(void*) == 4, "Venom.dll is x86-only - inline assembly not supported by x64 or ARM.");
 
 #pragma once
