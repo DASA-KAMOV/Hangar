@@ -76,10 +76,31 @@ eg.
 
 Alternatively, you can use your own .dll injector to inject Venom.dll into the G-Police executable.
 
-If no configuration file (Venom.cfg) is present, defaults will be used.
+### Key Bindings
+These are currently fixed, I may add the ability to customize them via Venom.cfg at a later time.
+| Key | Function | 
+| :---: | :----: |
+|F2|Display Debug Info (equivalent to STATTOE cheat)|
+|F3|Toggle No-HUD|
+|F4|Toggle Pseudo Wireframe|
+|NUMPAD 1|Look down + left|
+|NUMPAD 2|Look down|
+|NUMPAD 3|Look down + right|
+|NUMPAD 4|Look right|
+|NUMPAD 5|Look forward|
+|NUMPAD 6|Look left|
+|NUMPAD 7|Look left + up|
+|NUMPAD 8|Look up|
+|NUMPAD 9|Look up + right|
+|END|Unloads Venom.dll|
+
+---
 
 ## Venom.dll Configuration
 All options are configured via Venom.cfg, which must be placed in the same directory as Venom.dll
+
+If no configuration file (Venom.cfg) is present, defaults will be used.
+
 ### General Rules
 * **Ordering:** Entry ordering does not matter.
 * **Defaults:** Missing or invalid entries automatically fall back to their default values.
@@ -90,30 +111,30 @@ All options are configured via Venom.cfg, which must be placed in the same direc
 
 | Option | Values | Default | Description |
 | :--- | :---: | :---: | :--- |
-| `Fix_Bleeps` | `true` \| `false` | `true` | Fixes missing mission briefing text sound effects at low volumes or under certain hardware setups. |
-| `Fix_Focus` | `true` \| `false` | `true` | Fixes unresponsive mouse/keyboard/joystick inputs after Alt-Tabbing or minimizing. Also resolves windowing glitches under Linux (WINE/Proton). |
-| `Fix_Icon` | `true` \| `false` | `true` | Restores the correct application window icon (no effect on Linux). |
-| `Fix_Mutex` | `true` \| `false` | `false` | Properly enforces single-instance restrictions to prevent multiple copies of the game from running simultaneously. |
-| `Text_Tweaks` | `true` \| `false` | `true` | Applies minor adjustments to improve in-game text readability. |
+| `Fix_Bleeps` | `true` `false` | `true` | Fixes missing mission briefing text sound effects at low volumes or under certain hardware setups. |
+| `Fix_Focus` | `true` `false` | `true` | Fixes unresponsive mouse/keyboard/joystick inputs after Alt-Tabbing or minimizing. Also resolves windowing glitches under Linux (WINE/Proton). |
+| `Fix_Icon` | `true` `false` | `true` | Restores the correct application window icon (no effect on Linux). |
+| `Fix_Mutex` | `true` `false` | `false` | Properly enforces single-instance restrictions to prevent multiple copies of the game from running simultaneously. |
+| `Text_Tweaks` | `true` `false` | `true` | Applies minor adjustments to improve in-game text readability. |
 | `Civilian_Vehicle_Spawn_Delay` | Positive Integer | `4500` | Sets the delay before civilian traffic spawns at the start of a mission (`0` spawns them immediately). |
-| `Enable_All_Camera_Modes` | `true` \| `false` | `true` | Unlocks hidden demo camera angles (e.g., `ISO CAM`, `CLOSE CAM`). |
-| `Enable_Asset_Override` | `true` \| `false` | `false` | Allows replacing `.RDT` archive assets via `/override/[ARCHIVE]/[OFFSET]` |
-| `Enable_POVHat_To_Keyboard` | `true` \| `false` | `true` | Maps cockpit look-around controls (normally restricted to joystick POV hats) to the Numpad in Keyboard mode. |
-| `Subtitles` | `true` \| `false` | `false` | Displays in-game mission voiceovers/instructions in the top-left corner (does not apply to FMV cutscenes). |
-| `Draw_Extra_Cockpit` | `true` \| `false` | `true` | Prevents parts of the cockpit interior from clipping out of view at high FOVs or widescreen resolutions. |
+| `Enable_All_Camera_Modes` | `true` `false` | `true` | Unlocks hidden demo camera angles (e.g., `ISO CAM`, `CLOSE CAM`). |
+| `Enable_Asset_Override` | `true` `false` | `false` | Allows replacing `.RDT` archive assets via `/override/[ARCHIVE]/[OFFSET]` |
+| `Enable_POVHat_To_Keyboard` | `true` `false` | `true` | Maps cockpit look-around controls (normally restricted to joystick POV hats) to the Numpad in Keyboard mode. |
+| `Subtitles` | `true` `false` | `false` | Displays in-game mission voiceovers/instructions in the top-left corner (does not apply to FMV cutscenes). |
+| `Draw_Extra_Cockpit` | `true` `false` | `true` | Prevents parts of the cockpit interior from clipping out of view at high FOVs or widescreen resolutions. |
 | `Fog_Near` | Positive Integer | `175000` | Sets the starting distance for fog effects (does not alter maximum geometry render distance). |
 | `Fog_Far` | Positive Integer | `195000` | Sets the ending distance for fog effects (does not alter maximum geometry render distance). |
 | `FOV_Multiplier` | Positive Integer | `230` | Adjusts Field of View using the formula: `FOV = [VALUE] * [Screen Width] / 320`. |
 | `Terrain_LOD_Threshold` | Positive Integer | `25000` | Distance at which terrain switches to low-resolution textures. |
 | `Framerate_Limit` | `0` or Positive Integer | `0` | Caps the in-game framerate (`0` = unlimited, though the engine still caps at your monitor's refresh rate). |
-| `Enable_Graphics_Proxy` | `true` \| `false` | `false` | Hooks DirectDraw/Direct3D to fix startup `EnumDisplayModes` crashes, patch broken transparency (adds minor gray fringing), and unlock resolutions >2048px. *Consider dgVoodoo2 or DxWnd for more mature wrapper features.* |
-| `Enable_Audio_Proxy` | `true` \| `false` | `false` | Routes WINMM audio through DirectSound8 to fix bugs like non-looping menu music. |
-| `Virtual_CD_Drive` | `true` \| `false` | `false` | Improves compatibility with virtual drives and physical CD drives not assigned to `D:\`. Forces `Enable_Audio_Proxy=true`. |
-| `Use_CD_Music` | `true` \| `false` | `true` | When `false`, loads standard PCM `.WAV` files from `/music` instead of a CD. Forces `Enable_Audio_Proxy=true`. |
-| `Enable_Media_Keys` | `true` \| `false` | `false` | Enables hardware media keys (Play/Pause/Stop/Next/Prev) for music playback. Requires `Enable_Audio_Proxy=true`. |
-| `Show_Console` | `true` \| `false` | `true` | Keeps the debug console window open alongside the game. |
-| `Console_Log_Level` | `off` \| `critical` \| `error` \| `warn` \| `info` \| `debug` \| `trace` | `info` | Verbosity level for logs printed to the console window. |
-| `File_Log_Level` | `off` \| `critical` \| `error` \| `warn` \| `info` \| `debug` \| `trace` | `trace` | Verbosity level for logs written to disk (requires `Log_File_Path` to be set). |
+| `Enable_Graphics_Proxy` | `true` `false` | `false` | Hooks DirectDraw/Direct3D to fix startup `EnumDisplayModes` crashes, patch broken transparency (adds minor gray fringing), and unlock resolutions >2048px. *Consider dgVoodoo2 or DxWnd for more mature wrapper features.* |
+| `Enable_Audio_Proxy` | `true` `false` | `false` | Routes WINMM audio through DirectSound8 to fix bugs like non-looping menu music. |
+| `Virtual_CD_Drive` | `true` `false` | `false` | Improves compatibility with virtual drives and physical CD drives not assigned to `D:\`. Forces `Enable_Audio_Proxy=true`. |
+| `Use_CD_Music` | `true` `false` | `true` | When `false`, loads standard PCM `.WAV` files from `/music` instead of a CD. Forces `Enable_Audio_Proxy=true`. |
+| `Enable_Media_Keys` | `true` `false` | `false` | Enables hardware media keys (Play/Pause/Stop/Next/Prev) for music playback. Requires `Enable_Audio_Proxy=true`. |
+| `Show_Console` | `true` `false` | `true` | Keeps the debug console window open alongside the game. |
+| `Console_Log_Level` | `off` `critical` `error` `warn` `info` `debug` `trace` | `info` | Verbosity level for logs printed to the console window. |
+| `File_Log_Level` | `off` `critical` `error` `warn` `info` `debug` `trace` | `trace` | Verbosity level for logs written to disk (requires `Log_File_Path` to be set). |
 | `Log_File_Path` | Valid file path | *(Empty)* | Destination path for the `.log` file (e.g., _`C:\Psygnosis\G-Police\venom.log`_). Leave empty to disable file logging. |
 
 ### Asset Overrides
@@ -252,22 +273,22 @@ Hangar is distributed in the hope that it will be useful, but WITHOUT ANY WARRAN
 
 ## Screenshots
 
-Images: Hangar running on Fedora 45 KDE, Re-Enabled hidden ISO CAM view with No-HUD enabled, Asset Override (menu background image overriden with recoloured image), In-Game Subtitles (top left), Pseudo-Wireframe Enabled.
+Images: Hangar running on Fedora 45 KDE, Re-Enabled hidden ISO CAM view with No-HUD enabled, Asset Override (menu background image overridden with recoloured image), In-Game Subtitles (top left), Pseudo-Wireframe Enabled.
 
-<a href="./images/Fedora45.png">
-  <img src="./images/Fedora45.png" alt="Hangar running on Fedora 45 KDE" width="200" />
-</a>
 <a href="./images/ISO_CAM.png">
-  <img src="./images/ISO_CAM.png" alt="Re-Enabled hidden ISO CAM view with No-HUD enabled" width="200" />
-</a>
-<a href="./images/PurpleMenu.png">
-  <img src="./images/PurpleMenu.png" alt="Asset Override (menu background image overriden with recoloured image)" width="200" />
+  <img src="./images/ISO_CAM.png" alt="Re-Enabled hidden ISO CAM view with No-HUD enabled" width="200" height="200" />
 </a>
 <a href="./images/Subtitles.png">
-  <img src="./images/Subtitles.png" alt="In-Game Subtitles (top left)" width="200" />
+  <img src="./images/Subtitles.png" alt="In-Game Subtitles (top left)" width="200" height="200" />
 </a>
 <a href="./images/Wireframe.png">
-  <img src="./images/Wireframe.png" alt="Pseudo-Wireframe Enabled" width="200" />
+  <img src="./images/Wireframe.png" alt="Pseudo-Wireframe Enabled" width="200" height="200" />
+</a>
+<a href="./images/PurpleMenu.png">
+  <img src="./images/PurpleMenu.png" alt="Asset Override (menu background image overridden with recoloured image)" width="200" width="200" />
+</a>
+<a href="./images/Fedora45.png">
+  <img src="./images/Fedora45.png" alt="Hangar running on Fedora 45 KDE" width="200" height="200" />
 </a>
 
 ---
