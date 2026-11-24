@@ -1,4 +1,5 @@
 ﻿// SPDX-License-Identifier: GPL-3.0-or-later
+
 #define DIRECTINPUT_VERSION 0x0700
 #include <Windows.h>
 #include <dinput.h>
