@@ -1,0 +1,7 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+
+// https://go.microsoft.com/fwlink/?linkid=865984
+// This file exists to prevent "Browsing operations around this macro may fail. Consider adding it to a hint file" spam in Visual Studio.
+// It seems to work perfectly well without it present.
+
+#define INVALID_HANDLE_VALUE ((HANDLE)(LONG_PTR)-1)

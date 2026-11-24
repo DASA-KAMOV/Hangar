@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Proxies">
+      <UniqueIdentifier>{614f35c3-1009-41c2-badd-483eedc27354}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Proxies\IDirectDraw">
+      <UniqueIdentifier>{fe7cecca-16f2-4426-a55c-c05aad070a86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Proxies\IDirectDraw\IDirectDrawSurface">
+      <UniqueIdentifier>{7be10e5d-70f4-49aa-b991-804d31be853b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Proxies\IDirect3D">
+      <UniqueIdentifier>{91437af1-f486-46e6-9fe2-3f8df2884723}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Proxies\IDirect3D\IDirect3DDevice">
+      <UniqueIdentifier>{1a26fe7d-6e88-4adb-8488-104418f73246}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Proxies">
+      <UniqueIdentifier>{904e27e0-3e9b-4969-8695-4f2c771014f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Proxies\IDirectDraw">
+      <UniqueIdentifier>{703045b0-5dab-4312-bc6a-8ac1d24342db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Proxies\IDirectDraw\IDirectDrawSurface">
+      <UniqueIdentifier>{595b8068-e341-4f55-9fbd-b3ae52ebfa62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Proxies\IDirect3D">
+      <UniqueIdentifier>{a86c9f51-28bd-4645-a7e4-23a8378433fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Proxies\IDirect3D\IDirect3DDevice">
+      <UniqueIdentifier>{568e8935-42b4-4fa3-aa41-c01ffb36dc1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Proxies\IDirectInput">
+      <UniqueIdentifier>{bc94e77c-8306-4bf0-87a7-c5c24b2ea6b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Proxies\IDirectInput">
+      <UniqueIdentifier>{167be212-e164-47b1-bd0d-eff2dff6de25}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="memory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hookedWindowsFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="config.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hookslib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="logging.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IDirectDraw2Proxy.cpp">
+      <Filter>Source Files\Proxies\IDirectDraw</Filter>
+    </ClCompile>
+    <ClCompile Include="IDirectDraw1Proxy.cpp">
+      <Filter>Source Files\Proxies\IDirectDraw</Filter>
+    </ClCompile>
+    <ClCompile Include="IDirectDrawSurface1Proxy.cpp">
+      <Filter>Source Files\Proxies\IDirectDraw\IDirectDrawSurface</Filter>
+    </ClCompile>
+    <ClCompile Include="musicPlayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IDirect3D1Proxy.cpp">
+      <Filter>Source Files\Proxies\IDirect3D</Filter>
+    </ClCompile>
+    <ClCompile Include="IDirect3DDevice1Proxy.cpp">
+      <Filter>Source Files\Proxies\IDirect3D\IDirect3DDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="ProxyCommon.cpp">
+      <Filter>Source Files\Proxies</Filter>
+    </ClCompile>
+    <ClCompile Include="IDirectInputA.cpp">
+      <Filter>Source Files\Proxies\IDirectInput</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="memory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="hookedWindowsFunctions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="hookslib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="logging.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IDirectDraw2Proxy.h">
+      <Filter>Header Files\Proxies\IDirectDraw</Filter>
+    </ClInclude>
+    <ClInclude Include="IDirectDraw1Proxy.h">
+      <Filter>Header Files\Proxies\IDirectDraw</Filter>
+    </ClInclude>
+    <ClInclude Include="IDirectDrawSurface1Proxy.h">
+      <Filter>Header Files\Proxies\IDirectDraw\IDirectDrawSurface</Filter>
+    </ClInclude>
+    <ClInclude Include="musicPlayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IDirect3D1Proxy.h">
+      <Filter>Header Files\Proxies\IDirect3D</Filter>
+    </ClInclude>
+    <ClInclude Include="IDirect3DDevice1Proxy.h">
+      <Filter>Header Files\Proxies\IDirect3D\IDirect3DDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="ProxyCommon.h">
+      <Filter>Header Files\Proxies</Filter>
+    </ClInclude>
+    <ClInclude Include="IDirectInputAProxy.h">
+      <Filter>Header Files\Proxies\IDirectInput</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
