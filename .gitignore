@@ -434,3 +434,5 @@ FodyWeavers.xsd
 # Operating System Files
 .DS_Store
 Thumbs.db
+/images/Thumbs.db:encryptable
+/images/Thumbs.db:encryptable
