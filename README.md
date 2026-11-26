@@ -53,7 +53,7 @@ Hangar may in the future (either in whole or in part) be used as a basis for mor
 * Enables the display of in-game mission instructions/voiceovers to the top left of the screen.
 
 * DirectDraw/Direct3D hooks.
-  * May in the future form a basis for bigger hacks etc. eg. Translation to modern rendering. Right now it's just some quick fixes and QoL to get you in-game without too much headache. Consider disabling this and using DxWnd, dgVoodoo2, DxWrapper or similar wrappers if you want something more mature/fully featured.
+  * May in the future form a basis for bigger hacks etc. eg. Translation to modern rendering. Right now its just some quick fixes and QoL to get you in-game without too much headache. Consider disabling this and using DxWnd, dgVoodoo2, DxWrapper or similar wrappers if you want something more mature/fully featured.
   * Fixes startup crash caused by EnumDisplayModes returning too many values and overflowing.
   * Fixes some opaque surfaces appearing transparent. Hacky fix at present, results in gray fringing around transparent textures. Ugly, but less ugly than broken transparency.
   * Allows screen resolutions wider/taller than 2048 pixels. Untested!
@@ -61,7 +61,7 @@ Hangar may in the future (either in whole or in part) be used as a basis for mor
 * WIMM hooks
 Hooks the Windows Multimedia Subsystem (WINMM), passes control to a DirectSound8 player (which may in the future be updated to something more modern). This will fix some audio issues (eg. Main Menu music not looping). It is not however a 1:1 faithful re-implementation of the original game audio system.
   * Enables a few fix for users running G-Police from a Virtual CD Drive, as well as users experiencing issues with G-Police not finding the CD in a physical drive other than D:/
-  * Enables the user to use their own music in-game, and control it via medal keys.
+  * Enables the user to use their own music in-game, and control it via media keys.
 
 ---
 
@@ -92,7 +92,6 @@ These are currently fixed, I may add the ability to customize them via Venom.cfg
 |NUMPAD 7|Look left + up|
 |NUMPAD 8|Look up|
 |NUMPAD 9|Look up + right|
-|END|Unloads Venom.dll|
 
 ---
 
@@ -138,17 +137,17 @@ If no configuration file (Venom.cfg) is present, defaults will be used.
 | `Log_File_Path` | Valid file path | *(Empty)* | Destination path for the `.log` file (e.g., _`C:\Psygnosis\G-Police\venom.log`_). Leave empty to disable file logging. |
 
 ### Asset Overrides
-When `Enable_Asset_Override=true` is set in Venom.cfg, G-Police will use files in the local folder _/override_ will to replace game assets from *.RDT archives.
+When `Enable_Asset_Override=true` is set in Venom.cfg, G-Police will use files in the local (local to GPOLICE.exe, not to Venom.dll!) folder _/override_ will to replace game assets from *.RDT archives.
 
 * eg. _/override/RES.RDT/2EE5038.IMG_ replaces the IMG asset at 0x2EE5038 in the RES.RDT archive.
   * Files prefixed by 0x (eg. 0x2EE5038.IMG) or with a decimal offset (eg. 49172536.IMG) also work.
   * File extensions are not needed (they just help you identify the file types).
 
-* There are some limitations, it's not magic.
+* There are some limitations, its not magic.
 Replacing a 5kb texture with a 50mb texture won't give high res textures, it will just crash.
 
 ### Music Overrides
-When `Use_CD_Music=false` is set in Venom.cfg, G-Police will read music from the local folder _/music_ instead of the CD.
+When `Use_CD_Music=false` is set in Venom.cfg, G-Police will read music from the local (local to GPOLICE.exe, not to Venom.dll!) folder _/music_ instead of the CD.
 
 * Use PCM Audio (*.WAV) files.
   * Keep them simple (no non-standard formats!) for best compatibility.
@@ -183,18 +182,18 @@ Hangar's features which rely only on memory manipulation should in principle be 
 
 * **Antivirus Software Identifies Havoc.exe/Venom.dll as Malware**
   * Add Havoc.exe and Venom.dll to your antivirus software's exceptions list.
-    * Havoc.exe/Venom.dll both do things which can cause some antivirus software's heuristics to identify it as malicious. eg. Havoc spawns a process then injects a .dll into it, Venom.dll intercepts and redirects calls to the Windows API, DirectX etc. I distribute Havoc.exe/Venom.dll pre-compiled for user convenience. What you gain in convenience, you give in trust. If you do not trust the compiled files, then I strongly encourage you to download and review the source code, then, once you are satisfied that no unwanted behaviour is occurring, you can build them from the source code yourself.
+    * Havoc.exe/Venom.dll both do things which can cause some antivirus software's heuristics to identify it as malicious. eg. Havoc spawns a process then injects a .dll into it, Venom.dll intercepts and redirects calls to the Windows API, DirectX etc. I distribute Havoc.exe/Venom.dll pre-compiled for user convenience. What you gain in convenience, you give in trust. If you do not trust the compiled files, then I strongly encourage you to download and review the source code. Once you are satisfied that no unwanted behaviour is occurring, you can build them from the source code yourself.
 
-  
 * **Error Message: _"The code execution could not proceed because [FILE] was not found. Reinstalling the program may fix this problem."_, Where [FILE] can vary, but is usually MSVCP140.dll, VCRUNTIME140.dll or ucrtbase.dll:**
-
   * You may have a missing, outdated or corrupted Microsoft Visual C++ Redistributable package/Universal C Runtime (UCRT).
     * Download and install/reinstall the required redistributables from [Microsoft](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-140), then reboot.
     * Download and install/reinstall [KB2999226](https://support.microsoft.com/en-us/servicing/os/windows/2020/04/update-for-universal-c-runtime-in-windows).
 
 * **Havoc/Venom Fails to start (no error message):**
-
   * If G-Police, Havoc.exe, Venom.dll or Venom.cfg is in a protected directory (eg. _C:\Program Files (x86)\\_), or you have told Venom.dll to write its log file into a protected directory, the problem is probably Windows User Access Control (UAC). Either move the files to a non-protected directory or Run as Administrator.
+
+* **Subtitles feature not working (no error messages):**
+  * Unknown bug, not sure what causes this to fail on some systems.
 
 ---
 
@@ -250,11 +249,11 @@ msbuild Hangar.sln /m /t:Build /p:Configuration=Release /p:Platform=Win32
 
 I release this at an interesting time for reverse engineering and modding.
 
-[AI decomp/recomp tools](https://github.com/teonett/Reverse-Engineer-Anything) are currently making waves in modding/reversing communities. Whether this is for better or worse remains to be seen. In the meantime, every new project that appears is being judged on whether AI had any part in it's creation, for fear of it being low-quality vibe-coded slop.
+[AI decomp/recomp tools](https://github.com/teonett/Reverse-Engineer-Anything) are currently making waves in modding/reversing communities. Whether this is for better or worse remains to be seen. In the meantime, every new project that appears is being judged on whether AI had any part in its creation, for fear of it being low-quality vibe-coded slop.
 
 Rest assured, all code I have written for this project is lovely, wholesome, human-coded slop.
 
-My rationale for this is less to do with AI itself, and more to do with my goals. This project was never really about the end result, but about the process of learning and tinkering with a game I care about, for the fun of it. I have had to learn a lot about C++, Assembly, the Windows API, audio formats, and vintage versions of DirectX. I hand-coded hooking functions instead of using a library like [MinHook](https://github.com/TsudaKageyu/minhook), because learning how these things work seemed interesting to me, not because it's the easiest or most efficient, or most correct way to do it. I did use [spdlog](https://github.com/gabime/spdlog) for logging though, one of the most important lessons I learned was that you shouldn't roll your own logging library.
+My rationale for this is less to do with AI itself, and more to do with my goals. This project was never really about the end result, but about the process of learning and tinkering with a game I care about, for the fun of it. I have had to learn a lot about C++, Assembly, the Windows API, audio formats, and vintage versions of DirectX. I hand-coded hooking functions instead of using a library like [MinHook](https://github.com/TsudaKageyu/minhook), because learning how these things work seemed interesting to me, not because its the easiest or most efficient, or most correct way to do it. I did use [spdlog](https://github.com/gabime/spdlog) for logging though, one of the most important lessons I learned was that you shouldn't roll your own logging library.
 
 All of the reverse-engineering required to make this work was done by myself using tools such as [x32Dbg](https://x64dbg.com/) and [Ghidra](http://ghidra.net/), rather than asking an LLM to decompile the game or find sequences of bytes on my behalf. The process of solving the giant puzzle that is digging through the game's internals is far more meaningful to me than watching an LLM do it for me.
 

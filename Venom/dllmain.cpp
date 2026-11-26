@@ -1663,12 +1663,11 @@ DWORD __stdcall InjectedThread(HINSTANCE hinstDLL) {
 	if (failCount == 0) { spdlog::info("{}/{} memory patches applied successfully.", successCount, successCount + failCount); }
 	else { spdlog::error("{}/{} memory patches failed.", failCount, successCount + failCount); }
 
-	while (!KeyPressed(VK_END)) {
+	while (true) {
 		if (KeyPressed(VK_F2)) {
 			if (InfoCheatAddress) { PatchMemory(InfoCheatAddress, (uint8_t)(*(uint8_t*)InfoCheatAddress ^ 1)); }
 		}
 				
-		
 		if (KeyPressed(VK_F3)) {
 			if (NoHUDAddress) {
 				ToggleCondJMPToJMP(NoHUDAddress, noHUDJumpPatch, !noHUD);
@@ -1717,7 +1716,8 @@ DWORD __stdcall InjectedThread(HINSTANCE hinstDLL) {
 		Sleep(20);
 	}
 
-	spdlog::info("END key pressed. Venom.dll will be unloaded.");
+	spdlog::critical("InjectedThread() - Unexpected exit from main loop.");
+	LogLastError();
 	musicPlayer.shutdown();
 	if (showConsole) { FreeConsole(); }
 	spdlog::shutdown();
